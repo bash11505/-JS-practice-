@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Handling</title>
+</head>
+<body>
+
+<form id="myForm">
+Name: <input type="text" id="name"><br><br>
+Email: <input type="email" id="email"><br><br>
+<button type="submit">Submit</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+event.preventDefault();
+
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+if (name === "" || email === "") {
+    alert("Please fill all fields");
+    return;
+}
+
+document.getElementById("result").innerText =
+    "Name: " + name + " | Email: " + email;
+});
+</script>
+
+</body>
+</html>
