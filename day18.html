@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h2>Weather App</h2> 
+    <p id ="weather">SUPER</p>
+    <button onclick="updateWeather()">Update Weather</button>
+
+    <script>
+        fetch("https://api.open-meteo.com/v1/forecast?latitude=17.3850&longitude=78.4867&current_weather=true")
+        .then(res=>res.json())
+        .then(data=>{
+            console.log("tempreature:",data.current_weather.temperature);
+            console.log("wind speed:",data.current_weather.windspeed);
+            document.getElementById("weather").innerHTML = `Temperature: ${data.current_weather.temperature}°C, Wind Speed: ${data.current_weather.windspeed} km/h`;
+        })
+        .catch(err=>console.log(err));
+    </script>
+</body>
+</html>
