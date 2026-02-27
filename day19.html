@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRACTICE</title>
+</head>
+<body>
+    <h2>dangerous</h2>
+    <button onclick="getdata()">Get Data</button>
+    <p id ="result"></p>
+    <script>
+        function getdata(resolve,reject){
+            fetch("https://randomuser.me/api/?results=50")
+            .then(resolve=>resolve.json())
+            .then(data=>{
+                document.getElementById("result").innerText=data.results[0].name.title;
+            })
+            .catch(reject=>{
+                document.getElementById("result").innerText="<h1>Error 404  Page not found</h1>";
+            })
+        }
+    </script>
+</body>
+</html>
